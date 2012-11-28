@@ -66,7 +66,7 @@ EstudoSelfJoins2::Application.configure do
   # config.active_record.auto_explain_threshold_in_seconds = 0.5
 
   config.action_mailer.delivery_method = :ses
-  config.action_mailer.default_url_options = { :host => 'example.com' }
+  config.action_mailer.default_url_options = { :host => 'localhost:3000' }
 
   ActionMailer::Base.perform_deliveries = true
   ActionMailer::Base.raise_delivery_errors = true
@@ -75,7 +75,7 @@ EstudoSelfJoins2::Application.configure do
       :port => "25",
       :domain => "email-smtp.us-east-1.amazonaws.com",
       :enable_starttls_auto => true,
-      :user_name => "SMTP_username",
-      :password => "SMTP_password"
+      :user_name => "AKIAISTKT7NQ6555YXGQ",
+      :password => "AttXPdrwRVHh9DSHCtaouS89RcT5vtwWEKMik8/Qf65R"
   }
 end

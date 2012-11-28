@@ -33,15 +33,26 @@
   </div>
   <div class="tab-pane fade" id="seguindo">
 		<h3>Seguindo</h3>
-		<ul>
-			<% @user.friendships.each do |friendship| %>
-					<li>
-            <%= link_to friendship.friend.username,  user_path(friendship.friend.username) %>
-						<% if current_user.eql? @user %>
-							~> <%= link_to 'Remover Amigo', friendship, method: :delete, class: 'btn btn-small btn-danger', confirm: 'Você tem certeza?' %>
+
+		<table>
+		  <thead>
+		    <tr>
+		      <th></th>
+		      <th></th>
+		    </tr>
+		  </thead>
+		  <tbody>
+		  	<% @user.friendships.each do |friendship| %>
+		    <tr>
+		      <td><%= link_to friendship.user.username, user_path(friendship.friend.username) %></td>
+		      <td>
+		      	<% if current_user.eql? @user %>
+							<%= link_to 'Remover Amigo', friendship, method: :delete, class: 'btn btn-small btn-danger', confirm: 'Você tem certeza?' %>
 						<% end -%>
-					</li>
-			<% end -%>
-		</ul>
+		      </td>
+		    </tr>
+		    <% end -%>
+		  </tbody>
+		</table>
   </div>
 </div>

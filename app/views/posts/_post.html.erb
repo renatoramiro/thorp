@@ -1,6 +1,6 @@
 <div class="well">
   <p><%= post.body %></p>
-  <p class="muted"><small><%= link_to "@#{post.user.username}", post.user %> (<%= time_ago_in_words(post.created_at) %>)</small></p>
+  <p class="muted"><small><%= link_to "@#{post.user.username}", user_path(post.user.username) %> (<%= time_ago_in_words(post.created_at) %>)</small></p>
   <hr class="soften">
   <p>
     <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion<%= post.id %>" href="#collapse<%= post.id %>">
