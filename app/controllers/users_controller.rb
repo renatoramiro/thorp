@@ -12,7 +12,8 @@ class UsersController < ApplicationController
 
   def show
   	begin
-  		@user = User.find(params[:id])
+  		@user = User.where(:username => params[:id])
+      @user = @user[0]
 	  rescue ActiveRecord::RecordNotFound => e
 	  	redirect_to posts_url, alert: "Usuario com id #{params[:id]} nao foi encontrado."
 	  end
