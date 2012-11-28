@@ -1,3 +1,3 @@
 ActionMailer::Base.add_delivery_method :ses, AWS::SES::Base,
-  :access_key_id     => 'your_access_id',
-  :secret_access_key => 'your_secret_access_key'
+  :access_key_id     => 'AKIAJK2MU7OVW3DSDBRQ',
+  :secret_access_key => 'dA3FA1pjTEJBdtXOmFKXYsA0FsGiCZ50Ch1PSZvA'
