@@ -1,0 +1,7 @@
+== Welcome to Thorp
+
+Thorp is a Simple Social Networking. We do not intend to compete with any other social network.
+
+This is only a demo application.
+
+Visit: link:thorp.startupseven.net

@@ -1,0 +1,11 @@
+<h3>Timeline</h3>
+<% content_for :sidebar do %>
+  <div id="post_form">
+    <%= render 'form' %>
+  </div>
+  <p><%= link_to "Procurar Amigo", users_path %></p>
+<% end -%>
+<div id="post_index">
+  <%= render @posts %>
+	<%= will_paginate @posts, class: "pagination pagination-centered" %>
+</div>
