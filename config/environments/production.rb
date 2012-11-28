@@ -67,4 +67,15 @@ EstudoSelfJoins2::Application.configure do
 
   config.action_mailer.delivery_method = :ses
   config.action_mailer.default_url_options = { :host => 'example.com' }
+
+  ActionMailer::Base.perform_deliveries = true
+  ActionMailer::Base.raise_delivery_errors = true
+  ActionMailer::Base.smtp_settings = {
+      :address => "email-smtp.us-east-1.amazonaws.com",
+      :port => "25",
+      :domain => "email-smtp.us-east-1.amazonaws.com",
+      :enable_starttls_auto => true,
+      :user_name => "SMTP_username",
+      :password => "SMTP_password"
+  }
 end
