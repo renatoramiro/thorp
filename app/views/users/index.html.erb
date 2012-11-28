@@ -1,5 +1,5 @@
 <% content_for :sidebar do %>
-	<p><i class="icon-user"></i> Usuário: <strong>@<%= current_user.username %></strong></p>
+	<p><i class="icon-user"></i> Usuário: <strong><%= link_to "@#{current_user.username}",  user_path(current_user.username) %></strong></p>
 	<p><i class="icon-time"></i> Conta criada em: <strong><%= current_user.created_at.strftime("%d/%m/%Y") %></strong></p>
 <% end -%>
 
@@ -22,7 +22,9 @@
 	  <tbody>
 	  	<% @users.each do |user| %>
 	    <tr>
-	      <td><%= user.username %></td>
+	      <td>
+	      	<%= link_to user.username,  user_path(user.username) %>
+	      </td>
 	      <td><%= user.created_at.strftime("%d/%m/%Y") %></td>
 	      <td>
 	      	<% unless current_user.friends.include?(user) %>

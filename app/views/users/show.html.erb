@@ -1,5 +1,5 @@
 <% content_for :sidebar do %>
-	<p><i class="icon-user"></i> Usuário: <strong>@<%= @user.username %></strong></p>
+	<p><i class="icon-user"></i> Usuário: <strong><%= link_to "@#{current_user.username}",  user_path(current_user.username) %></strong></p>
 	<p><i class="icon-time"></i> Conta criada em: <strong><%= @user.created_at.strftime("%d/%m/%Y") %></strong></p>
 	<hr>
 	<p><%= link_to "Procurar Amigo", users_path %></p>
@@ -27,7 +27,7 @@
     <h3>Seguidores</h3>
 		<ul>  
 		  <% @user.inverse_friends.each do |user| %>  
-		  <li><%= user.username %></li>
+		  <li><%= link_to user.username,  user_path(user.username) %></li>
 		  <% end %>  
 		</ul> 
   </div>
@@ -36,7 +36,7 @@
 		<ul>
 			<% @user.friendships.each do |friendship| %>
 					<li>
-						<%= friendship.friend.username %> 
+            <%= link_to friendship.friend.username,  user_path(friendship.friend.username) %>
 						<% if current_user.eql? @user %>
 							~> <%= link_to 'Remover Amigo', friendship, method: :delete, class: 'btn btn-small btn-danger', confirm: 'Você tem certeza?' %>
 						<% end -%>
