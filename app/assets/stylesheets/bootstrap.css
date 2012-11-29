@@ -155,6 +155,8 @@ body {
   line-height: 20px;
   color: #333333;
   background: url('grey.png');
+  padding-top: 60px;
+  padding-bottom: 40px;
 }
 
 /* line 22, ../sass/_scaffolding.scss */
