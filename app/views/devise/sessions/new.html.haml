@@ -1,0 +1,12 @@
+.row
+  .offset4.span4
+    = form_for(resource, :as => resource_name, :url => session_path(resource_name), html: {class: 'form-signin'}) do |f|
+      %h2.form-signin-heading Porta de Entrada
+      = f.text_field :username, class: 'span3', placeholder: 'Usuário'
+      = f.password_field :password, class: 'span3', placeholder: 'Senha'
+      - if devise_mapping.rememberable?
+        %label.checkbox
+          = f.check_box :remember_me
+          = f.label :remember_me, 'Lembrar-me'
+      = f.submit "Entrar", class: 'btn btn-large btn-primary'
+      = render "devise/shared/links"
