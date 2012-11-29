@@ -29,7 +29,7 @@ pt-BR:
       updated: 'A sua senha foi alterada com sucesso. Agora você está conectado.'
       send_paranoid_instructions: "Se seu e-mail existe no nosso banco de dados, você receberá um link de recuperação da senha em seu e-mail"
     confirmations:
-      send_instructions: 'Em alguns minutos, você receberá um email com instruções de confirmação de sua conta.'
+      send_instructions: 'Em alguns minutos, você receberá um email com instruções de confirmação de sua conta. Verifique sua Caixa de Spam, pois o servidor de seu e-mail pode ter classificado a mensagem do sistema como Lixo Eletrônico.'
       send_paranoid_instructions: 'Se seu e-mail existe no nosso banco de dados, você receberá um email com instruções sobre como confirmar sua conta.'
       confirmed: 'Sua conta foi confirmada com sucesso. Agora você está conectado.'
     registrations:
