@@ -1,4 +1,4 @@
-== Welcome to Thorp
+## Welcome to Thorp
 
 Thorp is a Simple Social Networking. We do not intend to compete with any other social network.
 
@@ -6,7 +6,7 @@ This is only a demo application.
 
 Visit: link:http://thorp.startupseven.net
 
-== Install the development
+## Install the development
 
 Clone this code.
 
