@@ -3,7 +3,7 @@
     .alert.alert-block
       %button.close{"data-dismiss" => "alert", :type => "button"} ×
       %h4 Aviso!
-      %p Se seu login continha algum caracter especial como @, ponto ou até mesmo espaço, foi preciso alterá-lo. E agora no lugar desses caracteres, foi colocado um underline.
+      %p Se seu login continha algum caracter especial como @, ou espaço, foi preciso alterá-lo. E agora no lugar desses caracteres, foi colocado um underline.
     = form_for(resource, :as => resource_name, :url => session_path(resource_name), html: {class: 'form-signin'}) do |f|
       %h2.form-signin-heading Porta de Entrada
       = f.text_field :username, class: 'span3', placeholder: 'Usuário'
