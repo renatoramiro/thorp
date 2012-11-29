@@ -1,5 +1,4 @@
 %p
   Bem vindo @#{@resource.username}!
-%p You can confirm your account email through the link below:
 %p Confirme sua conta através do link abaixo:
 %p= link_to 'Confirmar minha conta', confirmation_url(@resource, :confirmation_token => @resource.confirmation_token)

@@ -13,7 +13,7 @@ EstudoSelfJoins2::Application.routes.draw do
     get 'edit_profile', to: 'devise/registrations#edit'
   end
 
-  resources :users, constraints: { id: /[a-zA-Z.\/0-9_\-]+/ }, path: "/", only: [:index, :show]
+  resources :users, constraints: { id: /[a-zA-Z.\/0-9_\-]+/ }, path: "/user", only: [:index, :show]
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

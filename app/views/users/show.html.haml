@@ -36,7 +36,7 @@
         %li= link_to user.username,  user_path(user.username)
   #seguindo.tab-pane.fade
     %h3 Seguindo
-    %table
+    %table.table
       %thead
         %tr
           %th
@@ -44,7 +44,7 @@
       %tbody
         - @user.friendships.each do |friendship|
           %tr
-            %td= link_to friendship.user.username, user_path(friendship.friend.username)
+            %td= link_to friendship.friend.username, user_path(friendship.friend.username)
             %td
               - if current_user.eql? @user
                 = link_to 'Remover Amigo', friendship, method: :delete, class: 'btn btn-small btn-danger', confirm: 'Você tem certeza?'

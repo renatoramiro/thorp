@@ -9,8 +9,8 @@
     %strong= current_user.created_at.strftime("%d/%m/%Y")
 %h2 Procurar Amigo
 = form_tag users_path, method: :get, class: 'form-search' do
-	= search_field_tag :search, nil, class: 'span4'
-	= submit_tag 'Buscar', class: "btn"
+  = search_field_tag :search, nil, class: 'span4'
+  = submit_tag 'Buscar', class: "btn"
 
 %hr.soften
   .users
