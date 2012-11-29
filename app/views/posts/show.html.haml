@@ -1,0 +1,13 @@
+%p#notice= notice
+%p
+  %b User:
+  = @post.user_id
+%p
+  %b Body:
+  = @post.body
+%p
+  %b Reply to:
+  = @post.reply_to_id
+= link_to 'Edit', edit_post_path(@post)
+|
+= link_to 'Back', posts_path

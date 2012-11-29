@@ -1,0 +1,8 @@
+%h3 Timeline
+- content_for :sidebar do
+  #post_form
+    = render 'form'
+  %p= link_to "Procurar Amigo", users_path
+#post_index
+  = render @posts
+  = will_paginate @posts, class: "pagination pagination-centered"
