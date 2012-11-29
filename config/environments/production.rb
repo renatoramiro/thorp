@@ -75,7 +75,7 @@ EstudoSelfJoins2::Application.configure do
       :port => "25",
       :domain => "email-smtp.us-east-1.amazonaws.com",
       :enable_starttls_auto => true,
-      :user_name => "AKIAISTKT7NQ6555YXGQ",
-      :password => "AttXPdrwRVHh9DSHCtaouS89RcT5vtwWEKMik8/Qf65R"
+      :user_name => "user_name",
+      :password => "password"
   }
 end
