@@ -1,0 +1,29 @@
+%h2 Editar Conta
+= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put}) do |f|
+  = devise_error_messages!
+  .control-group
+    = f.label :email, class: 'control-label'
+    .controls
+      = f.email_field :email
+  .control-group
+    = f.label :password, "Senha", class: 'control-label'
+    .controls
+      = f.password_field :password, :autocomplete => "off"
+      %i (leave blank if you don't want to change it)
+  .control-group
+    = f.label :password_confirmation, "Confirmação da Senha", class: 'control-label'
+    .controls
+      = f.password_field :password_confirmation
+  .control-group
+    = f.label :current_password, "Senha Atual", class: 'control-label'
+    .controls
+      = f.password_field :current_password
+      %i (we need your current password to confirm your changes)
+  .control-group
+    .controls
+      = f.submit "Atualizar", class: 'btn'
+%hr
+  %h3 Cancelar minha conta
+  %p
+    Não está satisfeito? #{link_to "Cancelar minha conta", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete}.
+  = link_to "Voltar", :back

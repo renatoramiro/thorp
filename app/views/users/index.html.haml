@@ -1,0 +1,35 @@
+- content_for :sidebar do
+  %p
+    %i.icon-user
+    Usuário:
+    %strong= link_to "@#{current_user.username}",  user_path(current_user.username)
+  %p
+    %i.icon-time
+    Conta criada em:
+    %strong= current_user.created_at.strftime("%d/%m/%Y")
+%h2 Procurar Amigo
+= form_tag users_path, method: :get, class: 'form-search' do
+	= search_field_tag :search, nil, class: 'span4'
+	= submit_tag 'Buscar', class: "btn"
+
+%hr.soften
+  .users
+    - unless @users.empty?
+      %table.table.table-striped.table-hover
+        %thead
+          %tr
+            %th Nome
+            %th Conta criada em
+            %th
+        %tbody
+          - @users.each do |user|
+            %tr
+              %td
+                = link_to user.username,  user_path(user.username)
+              %td= user.created_at.strftime("%d/%m/%Y")
+              %td
+                - unless current_user.friends.include?(user)
+                  = link_to "Adicionar amigo", friendships_path(friend_id: user), method: :post, class: 'btn btn-info btn-small'
+                - else
+                  %span Já é amigo
+      = will_paginate @users, class: "pagination pagination-centered"

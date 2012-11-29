@@ -1,0 +1,50 @@
+- content_for :sidebar do
+  %p
+    %i.icon-user
+    Usuário:
+    %strong= link_to "@#{current_user.username}",  user_path(current_user.username)
+  %p
+    %i.icon-time
+    Conta criada em:
+    %strong= @user.created_at.strftime("%d/%m/%Y")
+  %hr
+    %p= link_to "Procurar Amigo", users_path
+%ul#myTab.nav.nav-tabs
+  %li.active
+    %a{"data-toggle" => "tab", :href => "#profile"} Timeline
+  %li
+    %a{"data-toggle" => "tab", :href => "#seguidores"} Seguidores
+  %li
+    %a{"data-toggle" => "tab", :href => "#seguindo"} Seguindo
+#myTabContent.tab-content
+  #profile.tab-pane.fade.in.active
+    %h3
+      @#{@user.username}' profile
+    %h4
+      Total de posts: #{@user.posts.count}
+    %hr
+      - @user.posts.order('created_at desc').each do |post|
+        .well
+          %p= post.body
+          %hr.soften
+            %p.muted
+              %small= time_ago_in_words(post.created_at)
+  #seguidores.tab-pane.fade
+    %h3 Seguidores
+    %ul
+      - @user.inverse_friends.each do |user|
+        %li= link_to user.username,  user_path(user.username)
+  #seguindo.tab-pane.fade
+    %h3 Seguindo
+    %table
+      %thead
+        %tr
+          %th
+          %th
+      %tbody
+        - @user.friendships.each do |friendship|
+          %tr
+            %td= link_to friendship.user.username, user_path(friendship.friend.username)
+            %td
+              - if current_user.eql? @user
+                = link_to 'Remover Amigo', friendship, method: :delete, class: 'btn btn-small btn-danger', confirm: 'Você tem certeza?'

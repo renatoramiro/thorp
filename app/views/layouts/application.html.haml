@@ -1,0 +1,62 @@
+!!!
+%html
+  %head
+    %title Thorp - O lugar ideal para encontrar seus amigos
+    = stylesheet_link_tag    "application", :media => "all"
+    = javascript_include_tag "application"
+    = csrf_meta_tags
+  %body
+    .navbar.navbar-inverse.navbar-fixed-top
+      .navbar-inner
+        .container
+          %a.btn.btn-navbar{"data-target" => ".nav-collapse", "data-toggle" => "collapse"}
+            %span.icon-bar
+            %span.icon-bar
+            %span.icon-bar
+          - if user_signed_in?
+            = link_to "Thorp", posts_path, class: 'brand'
+          - else
+            = link_to "Thorp", root_path, class: 'brand'
+          .nav-collapse.collapse
+            %ul.nav
+              - unless user_signed_in?
+                %li= link_to "Home", root_path
+              - else
+                %li= link_to "Timeline", posts_path
+              /
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            - if user_signed_in?
+              %ul.nav.pull-right
+                %li.dropdown
+                  %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
+                    @#{current_user.username}
+                    %b.caret
+                  %ul.dropdown-menu
+                    %li
+                      %a{:href => "#"} Ver Perfil
+                    %li
+                      %a{:href => "#"} Editar Perfil
+                    %li.divider
+                    %li= link_to "Sair", logout_path
+            - else
+              %p.pull-right.login
+                %span= link_to "Login", login_path
+
+    .container
+      - if notice
+        .alert.alert-success
+          %button.close{"data-dismiss" => "alert", :type => "button"} ×
+          %h4 Sucesso!
+          = notice
+      - if alert
+        .alert.alert-block
+          %button.close{"data-dismiss" => "alert", :type => "button"} ×
+          %h4 Aviso!
+          = alert
+      = yield :sidebar
+      = yield
+      %hr.soften
+        %footer
+          %p
+            Desenvolvida por #{link_to "StartupSeven", "http://startupseven.net", target: '_blank'} &copy; #{Time.now.year}

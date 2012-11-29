@@ -1,0 +1,31 @@
+.well
+  %p= post.body
+  %p.muted
+    %small
+      = link_to "@#{post.user.username}", user_path(post.user.username)
+      (#{time_ago_in_words(post.created_at)})
+  %hr.soften
+    %p
+      %a.accordion-toggle{"data-parent" => "#accordion#{post.id}", "data-toggle" => "collapse", :href => "#collapse#{post.id}"}
+        Reply?
+      - if current_user.eql? post.user
+        | #{link_to 'Destroy', post, method: :delete, remote: true}
+      - unless post.reply_to_id.nil?
+        | (REPLIED)
+.accordion{:id => "accordion#{post.id}"}
+  .accordion-group
+    .accordion-body.collapse{:id => "collapse#{post.id}"}
+      .accordion-inner
+        = form_for(@post, remote: true, class: 'form-inline') do |f|
+          - if @post.errors.any?
+            #error_explanation
+              %h2
+                = pluralize(@post.errors.count, "error")
+                prohibited this post from being saved:
+              %ul
+                - @post.errors.full_messages.each do |msg|
+                  %li= msg
+          = f.text_area :body, value: "@#{post.user.username} ", class: 'span3', rows: 7, placeholder: 'O que você está pensando?'
+          %br
+          = f.hidden_field :reply_to_id, value: post.id
+          = f.submit "Enviar", class: "btn", id: 'teste'

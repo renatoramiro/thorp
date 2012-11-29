@@ -9,7 +9,11 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me
   attr_accessible :username
 
-  validates :username, presence: true, uniqueness: true
+  #validates :username, presence: true, uniqueness: true
+
+  validates :username, presence: true, uniqueness: true,
+            format: { with: /\A[a-zA-Z][a-zA-Z0-9_\-\.]*\z/,
+                      message: "only letters, digits & '_' '-' '.' allowed. Letter should be first" }
 
   has_many :friendships
   has_many :friends, :through => :friendships
