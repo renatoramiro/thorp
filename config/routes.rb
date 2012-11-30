@@ -3,8 +3,8 @@ EstudoSelfJoins2::Application.routes.draw do
   get "home/index"
 
   resources :posts, only: [:index, :create, :destroy]
-
   resources :friendships, only: [:create, :destroy]
+
   devise_for :users do
     get 'logout', to: 'devise/sessions#destroy'
     get 'login', to: 'devise/sessions#new'
@@ -19,6 +19,7 @@ EstudoSelfJoins2::Application.routes.draw do
 
   resources :users, constraints: { id: /[a-zA-Z.\/0-9_\-]+/ }, path: "/", only: [:index, :show]
 
+  root :to => "home#index"
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

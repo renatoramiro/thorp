@@ -6,7 +6,7 @@
   %p
     %i.icon-time
     Conta criada em:
-    %strong= @user.created_at.strftime("%d/%m/%Y")
+    %strong= current_user.created_at.strftime("%d/%m/%Y")
   %hr
     %p= link_to "Procurar Amigo", users_path
 %ul#myTab.nav.nav-tabs
@@ -47,4 +47,4 @@
             %td= link_to friendship.friend.username, user_path(friendship.friend.username)
             %td
               - if current_user.eql? @user
-                = link_to 'Remover Amigo', friendship, method: :delete, class: 'btn btn-small btn-danger', confirm: 'Você tem certeza?'
+                = button_to 'Remover Amigo', friendship, method: :delete, class: 'btn btn-small btn-danger', confirm: 'Você tem certeza?'

@@ -4,7 +4,7 @@ class UsersController < ApplicationController
   
   def index
   	if params[:search].present?
-  		@users = User.search(params[:search]).where("id != ?", current_user.id).order(:username).paginate(page: params[:page], per_page: 40)
+  		@users = User.search(params[:search]).where("id != ?", current_user.id).where("confirmed_at is not null").order(:username).paginate(page: params[:page], per_page: 40)
   	else
   		@users = []
   	end

@@ -29,7 +29,10 @@
               %td= user.created_at.strftime("%d/%m/%Y")
               %td
                 - unless current_user.friends.include?(user)
-                  = link_to "Adicionar amigo", friendships_path(friend_id: user), method: :post, class: 'btn btn-info btn-small'
+                  = form_for :friend, :url => friendships_path do |f|
+                    = f.hidden_field :friend_id, value: user.id
+                    -# link_to "Adicionar amigo", friendships_path(friend_id: user), method: :post, class: 'btn btn-info btn-small'
+                    %button.btn.btn-info.btn-small Adicionar amigo 
                 - else
                   %span Já é amigo
       = will_paginate @users, class: "pagination pagination-centered"
