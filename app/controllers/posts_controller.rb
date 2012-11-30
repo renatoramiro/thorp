@@ -37,7 +37,7 @@ class PostsController < ApplicationController
     respond_to do |format|
       if @post.save
         format.js   { @posts = current_user.timeline(1) }
-        format.html { redirect_to posts_url, notice: 'Post was successfully created.' }
+        format.html { redirect_to posts_url }
         format.json { render json: @post, status: :created, location: @post }
       else
         format.html { render action: "new" }
