@@ -12,4 +12,4 @@
 //
 //= require jquery
 //= require bootstrap
-
+//= require posts.js.coffee
