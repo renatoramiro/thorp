@@ -13,6 +13,7 @@ class PostsController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.erb
+      format.js
       format.json { render json: @posts }
     end
   end
@@ -25,6 +26,7 @@ class PostsController < ApplicationController
 
     respond_to do |format|
       format.html # new.html.erb
+      format.js
       format.json { render json: @post }
     end
   end
@@ -36,7 +38,7 @@ class PostsController < ApplicationController
 
     respond_to do |format|
       if @post.save
-        format.js   { @posts = current_user.timeline(1) }
+        format.js   { @posts = current_user.timeline(1).first }
         format.html { redirect_to posts_url }
         format.json { render json: @post, status: :created, location: @post }
       else
