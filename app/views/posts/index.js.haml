@@ -1,0 +1,6 @@
+$('#post_index').append("#{j render @posts}");
+- if @posts.next_page 
+  $('.pagination').replaceWith("#{j will_paginate @posts, class: 'pagination pagination-centered'}");
+- else 
+  $('.pagination').remove();  
+= sleep 2 
