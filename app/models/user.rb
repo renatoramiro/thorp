@@ -24,7 +24,7 @@ class User < ActiveRecord::Base
   has_many :posts
 
   def timeline(page)
-    Post.includes(:user).where(user_id: Friendship.where(user_id: self.id).pluck(:friend_id) << self.id).order("created_at desc").paginate(:page => page, :per_page => 50)
+    Post.includes(:user).where(user_id: Friendship.where(user_id: self.id).pluck(:friend_id) << self.id).order("created_at desc").paginate(:page => page, :per_page => 2)
   end
 
   def self.search(param)
